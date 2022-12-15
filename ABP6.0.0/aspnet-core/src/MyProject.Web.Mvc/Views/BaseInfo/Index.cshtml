@@ -1,0 +1,47 @@
+﻿@using MyProject.Web.Startup
+@using MyProject.BaseInfo
+@model MyProject.Web.Models.BaseInfo.CardFeeInfoViewModel
+@{
+    ViewBag.CurrentPageName = PageNames.CardFeeInfo;
+}
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/BaseInfo/CardFeeInfo.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/BaseInfo/CardFeeInfo.js" asp-append-version="true"></script>
+    </environment>
+}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2 class="pull-left">健身卡费用信息</h2>
+                <div class="form-inline filter-block pull-right" organization="form">
+
+                </div>
+            </div>
+            <div class="main-box-body clearfix">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>卡类型</th>
+                            <th>费用</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var organization in Model.cardFeeInfoDtos)
+                        {
+                            <tr>
+                                <td>@organization.CardType</td>
+                                <td>@organization.CardFee</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
